@@ -40,6 +40,11 @@ public class Test {
         glavnaya.click();
     }
 
+    @Attachment(value = "{0}")
+    public byte[] saveScreenshot(String message) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
 
     @org.junit.jupiter.api.Test
     @Feature(value = "Авторизация")
@@ -65,6 +70,7 @@ public class Test {
         LogUtil.log("Step 5 - Разрешить доступ к физическим активностям");
         WebElement step5 = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]"));
         step5.click();
+        saveScreenshot("Скриншот");
     }
 
     @org.junit.jupiter.api.Test
